@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Gregorio's Juicy Fried Chicken - Lomi, Lechon, Fried Chicken and more in Bambang, Nueva Vizcaya">
+  <title>Gregorio's | Juicy Fried Chicken</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>try{var _t=localStorage.getItem("gregorio-theme");if(_t==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+</head>
+<body>
+
+  <!-- ================= TOP BAR ================= -->
+  <div id="topbar">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <div class="top-contact d-flex flex-wrap">
+          <span><b class="tico">📞</b><span data-shop="phone"></span></span>
+          <span><b class="tico">📍</b><span data-shop="address"></span></span>
+          <span><b class="tico">🕒</b><span data-shop="hours"></span></span>
+        </div>
+        <span class="ttag">🔥 Order online</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar navbar-expand-lg" id="nav">
+    <div class="container">
+      <a class="navbar-brand" href="#hero">
+        <div class="blogo">
+          <div class="bico"><img src="logo.png" alt="Gregorio's logo"></div>
+          <div>
+            <div class="bname">Gregorio's<span>.</span></div>
+            <div class="bsub">Juicy Fried Chicken</div>
+          </div>
+        </div>
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu" aria-label="Toggle menu">
+        <span class="burger">☰</span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+          <li class="nav-item"><a class="nav-link" href="#hours">Hours</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact-section">Contact</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-1 nav-actions">
+          <button class="nbtn" id="themeBtn" type="button" role="switch" aria-checked="false" aria-label="Switch to dark mode" title="Dark mode"><span class="tknob" id="themeKnob">☀️</span></button>
+          <button class="nbtn" id="navSearchBtn" title="Search" aria-label="Search">🔍</button>
+          <button class="nbtn" id="authBtn" hidden>Log out</button>
+          <button class="nbtn" id="ordersBtn" aria-label="My orders">📦 Orders<span class="cnt" id="ordersCount" hidden>0</span></button>
+          <button class="nbtn" id="cartBtn" aria-label="Open cart">🛒<span class="cnt" id="cartCount">0</span></button>
+          <button class="nav-cta-btn" id="orderNowNav">Order Now</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= SEARCH OVERLAY ================= -->
+  <div id="searchOv">
+    <button class="sovclose" id="searchClose" aria-label="Close">✕</button>
+    <div class="sovbox">
+      <h4>What are you craving today?</h4>
+      <div class="sovinput">
+        <input type="text" id="searchInput" placeholder="Search lomi, sisig, chicken..." autocomplete="off">
+        <button id="searchGo" aria-label="Search">🔍</button>
+      </div>
+      <div class="sovcats" id="sovCats"></div>
+      <div class="sres-wrap" id="sovResults"></div>
+      <div class="sovtrend">
+        <p>🔥 Popular picks</p>
+        <span id="sovTrend"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= HERO ================= -->
+  <section id="hero">
+    <div class="hs hs1"></div>
+    <div class="hs hs2"></div>
+    <div class="hbgtxt">FOOD</div>
+    <div class="container">
+      <div class="row align-items-center g-5" style="min-height:88vh;">
+        <div class="col-lg-6">
+          <h1 class="htitle">Juicy <span class="hl">Fried Chicken</span><br>&amp; Filipino Favorites</h1>
+          <p class="hdesc">Steaming lomi, crispy lechon, golden fried chicken and sizzling sisig. Hot, hearty and made fresh every day. Dine in or take out.</p>
+          <div class="d-flex flex-wrap gap-3 mb-2">
+            <a href="#menu" class="btn-red">🍽️ Explore Menu</a>
+            <button class="btn-play" id="orderNowHero">
+              <div class="pico">▶</div>
+              <span>Order Now</span>
+            </button>
+          </div>
+          <div class="hstats d-flex gap-3 flex-wrap mt-4">
+            <div class="hstat"><span class="snum" id="statItems">0</span><small>Dishes on the menu</small></div>
+            <div class="sdiv"></div>
+            <div class="hstat"><span class="snum" id="statCats">0</span><small>Categories</small></div>
+            <div class="sdiv"></div>
+            <div class="hstat"><span class="snum" id="statFrom">₱0</span><small>Prices start at</small></div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div style="position:relative;text-align:center;">
+            <div class="hcircle">
+              <img src="logo.png" alt="Gregorio's Juicy Fried Chicken logo">
+            </div>
+            <div class="fcard fc5" data-dish="Fried Chicken (Big)" role="button" tabindex="0"><img class="fcimg" alt=""><div><span class="fcnum"></span><span class="fcsm"></span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="mqsec">
+    <div class="mqtrack" id="mqTrack"></div>
+  </div>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-5" data-aos="fade-right">
+          <div class="astack">
+            <div class="aexp"><span class="anum" id="aboutItems">0</span><small>Dishes on<br>our menu</small></div>
+            <div class="amain"><img src="about-dishes.jpg" alt="Gregorio's signboard"></div>
+            <div class="asm"><img src="about-signboard.png" alt="Lechon roll"></div>
+          </div>
+        </div>
+        <div class="col-lg-7" data-aos="fade-left">
+          <span class="slbl">Our Story</span>
+          <h2 class="stitle text-start">We Invite You to Visit<br>Our <span>Food Stop</span></h2>
+          <div class="sline lft"></div>
+          <p class="sdesc mb-4">Gregorio's is a local food stop in Bambang serving favorite comfort dishes: steaming lomi, crispy lechon, golden fried chicken and sizzling sisig, all at friendly prices. Come in, take out, or order online.</p>
+          <div class="mb-4">
+            <div class="fti">
+              <div class="ftico r">🍜</div>
+              <div>
+                <h6>Filipino Favorites</h6>
+                <p>Lomi, Cabagan miki, lechon and sisig, cooked the way you know them.</p>
+              </div>
+            </div>
+            <div class="fti">
+              <div class="ftico y">🍗</div>
+              <div>
+                <h6>Juicy Fried Chicken</h6>
+                <p>Crispy chicken by the piece, in meals and in combos with rice and sides.</p>
+              </div>
+            </div>
+            <div class="fti">
+              <div class="ftico g">🛒</div>
+              <div>
+                <h6>Easy Ordering</h6>
+                <p>Pick your dishes, add them to your cart and tell us where to deliver.</p>
+              </div>
+            </div>
+          </div>
+          <a href="#menu" class="btn-red">📖 View Full Menu</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MENU ================= -->
+  <section id="menu">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="slbl">What's Cooking</span>
+        <h2 class="stitle">Our Delicious <span>Menu</span></h2>
+        <div class="sline"></div>
+      </div>
+      <div class="menu-search">
+        <input type="search" id="menuSearch" placeholder="🔍 Search dishes (lomi, sisig, chicken...)" autocomplete="off">
+      </div>
+      <div class="text-center mb-4" id="filterRow"></div>
+      <div class="row g-4" id="mgrid"></div>
+    </div>
+  </section>
+
+  <!-- DISH POPUP -->
+  <div id="menuPop">
+    <div class="mpbox">
+      <button class="mpclose" id="mpClose" aria-label="Close">✕</button>
+      <div class="mpimg"><img id="mpImg" src="placeholder.gif" alt=""></div>
+      <div class="mpbody">
+        <div id="mpCat"></div>
+        <div id="mpTitle"></div>
+        <div id="mpDesc"></div>
+        <div id="mpPrice"></div>
+        <div class="mpmeta" id="mpMeta"></div>
+        <div class="mpqty">
+          <button class="mpqbtn" id="mpMinus">-</button>
+          <span class="mpqnum" id="mpQnum">1</span>
+          <button class="mpqbtn" id="mpPlus">+</button>
+          <span style="font-size:.82rem;color:#aaa;margin-left:9px;">portion</span>
+        </div>
+        <div class="mptags" id="mpTags"></div>
+        <button class="mpaddcart" id="mpAddCart">🛒 Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= HOURS ================= -->
+  <section id="hours">
+    <div class="hrsbg"></div>
+    <div class="container" style="position:relative;z-index:2;">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="slbl" style="color:#ffd9a0;">Opening Hours</span>
+        <h2 class="stitle" style="color:#fff;">We're Open <span style="color:var(--secondary);">For You</span></h2>
+        <div class="sline"></div>
+      </div>
+      <div class="row g-4 align-items-start justify-content-center">
+        <div class="col-lg-4" data-aos="fade-right">
+          <div class="hrscard">
+            <h5 class="hrsh">🕒 Opening Hours</h5>
+            <div class="hrsrow">
+              <span class="hrsday">Every day</span>
+              <div class="d-flex align-items-center gap-2">
+                <div class="hdot on"></div>
+                <span class="hrstime" data-shop="hours"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3" data-aos="zoom-in">
+          <div class="hrscta">
+            <div class="hrscta-ico">🚚</div>
+            <h4>Order Online</h4>
+            <p>Pick your dishes and we'll bring them to you.</p>
+            <button class="btnw" id="orderNowHours">Order Now →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact-section">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="slbl">Get In Touch</span>
+        <h2 class="stitle">Contact <span>Us</span></h2>
+        <div class="sline"></div>
+        <p class="sdesc mx-auto" style="max-width:480px;">Have a question or want to order for a party? Send us a message or visit us.</p>
+      </div>
+      <!-- LOCATION MAP -->
+      <div class="locwrap" id="location" data-aos="fade-up">
+        <a class="locmap" id="mapLink" href="https://www.google.com/maps/place/Heroes+Blvd,+Bambang,+Nueva+Vizcaya/@16.3868672,121.1014158,17z" target="_blank" rel="noopener" aria-label="Open Gregorio's location in Google Maps"><img src="location-map.jpg" alt="Map showing Heroes Boulevard, Bambang, Nueva Vizcaya"><span class="locpill">📍 Open in Google Maps</span></a>
+        <div class="text-center"><a class="locbtn" id="dirBtn" href="#" target="_blank" rel="noopener">🧭 Get Directions</a></div>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-5" data-aos="fade-right">
+          <div class="ctdark">
+            <h4>Let's Talk</h4>
+            <p class="ctsub">Visit our store, call us, or send a message.</p>
+            <div class="ctitem">
+              <div class="cticon">📍</div>
+              <div class="ctinfo"><strong>Address</strong><span data-shop="address"></span></div>
+            </div>
+            <div class="ctitem">
+              <div class="cticon">📞</div>
+              <div class="ctinfo"><strong>Phone</strong><span data-shop="phone"></span></div>
+            </div>
+            <div class="ctitem">
+              <div class="cticon">🕒</div>
+              <div class="ctinfo"><strong>Opening Hours</strong><span data-shop="hours"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7" data-aos="fade-left">
+          <div class="gform">
+            <div class="row g-3">
+              <div class="col-md-6"><label>Your name<input type="text" id="ctName" placeholder="Juan Dela Cruz"></label></div>
+              <div class="col-md-6"><label>Your email<input type="email" id="ctEmail" placeholder="you@example.com"></label></div>
+              <div class="col-12"><label>Message<textarea id="ctMsg" rows="4" placeholder="How can we help?"></textarea></label></div>
+              <div class="col-12"><button class="btn-red" id="ctcBtn" type="button">✉️ Send Message</button></div>
+            </div>
+            <div class="gok" id="ctcOk">Thank you! Your message was sent. We'll get back to you soon.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg4 col-lg-5">
+          <div class="fnm">Gregorio<span>'s</span></div>
+          <p class="fdesc">Juicy fried chicken, lomi, lechon, sisig and more, served fast and friendly in Bambang, Nueva Vizcaya.</p>
+          <div class="fsoc-title" id="fsocTitle">Follow us</div>
+          <nav class="fsoc" aria-labelledby="fsocTitle"><a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Gregorio's on Facebook (opens in a new tab)" title="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg></a><a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="Gregorio's on X (opens in a new tab)" title="X"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Gregorio's on Instagram (opens in a new tab)" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85C2.38 3.9 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95C23.73 2.7 21.3.27 16.95.07 15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg></a></nav>
+
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="ftit">Quick Links</div>
+          <ul class="flinks ps-0">
+            <li><a href="#hero">› Home</a></li>
+            <li><a href="#about">› About Us</a></li>
+            <li><a href="#menu">› Our Menu</a></li>
+            <li><a href="#hours">› Opening Hours</a></li>
+            <li><a href="#contact-section">› Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+          <div class="ftit">Get In Touch</div>
+          <div class="fci"><div class="fciico">📍</div><div class="fciinfo"><strong>Address</strong><span data-shop="address"></span></div></div>
+          <div class="fci"><div class="fciico">📞</div><div class="fciinfo"><strong>Phone</strong><span data-shop="phone"></span></div></div>
+          <div class="fci"><div class="fciico">🕒</div><div class="fciinfo"><strong>Hours</strong><span data-shop="hours"></span></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="fbot">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+          <p>&copy; 2026 <span>Gregorio's Juicy Fried Chicken</span>. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= LOGIN / DELIVERY MODAL ================= -->
+  <div class="gmodal-overlay" id="loginOverlay">
+    <div class="gmodal" role="dialog" aria-labelledby="loginTitle">
+      <button class="gclose" id="loginClose" aria-label="Close">✕</button>
+
+      <div id="stepLogin">
+        <h3 id="loginTitle">Log in to order</h3>
+        <p class="gsmall">Sign in to place your order at Gregorio's.</p>
+        <div class="gsocial">
+          <button type="button" class="gsocial-btn google" id="googleBtn"><span class="gico g">G</span> Continue with Google</button>
+          <button type="button" class="gsocial-btn facebook" id="facebookBtn"><span class="gico f">f</span> Continue with Facebook</button>
+        </div>
+        <div class="gdivider"><span>or</span></div>
+        <form id="loginForm" onsubmit="return false;">
+          <label>Username <input type="text" id="loginUser" autocomplete="off" required></label>
+          <label>Password <input type="password" id="loginPass" required></label>
+          <button class="btn-red gfull" type="submit">Log in</button>
+          <p class="gmsg err" id="loginMsg"></p>
+        </form>
+      </div>
+
+      <div id="stepDetails" hidden>
+        <h3>Delivery details</h3>
+        <p class="gsmall" id="detailsHello">Where should we deliver your order?</p>
+        <form id="detailsForm" onsubmit="return false;">
+          <label>Location (barangay / town) <input type="text" id="locInput" placeholder="e.g. Bambang, Nueva Vizcaya" required></label>
+          <button type="button" class="glink" id="useLocation">📍 Use my current location</button>
+          <label>Complete address <textarea id="addrInput" rows="3" placeholder="House no., street, landmark" required></textarea></label>
+          <button class="btn-red gfull" type="submit">Save and continue</button>
+          <p class="gmsg err" id="detailsMsg"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= CART DRAWER ================= -->
+  <div class="gcart-overlay" id="cartOverlay"></div>
+  <aside class="gcart" id="cartDrawer" aria-label="Shopping cart">
+    <div class="gcart-head">
+      <h3>Your Cart</h3>
+      <button class="gclose static" id="cartClose" aria-label="Close cart">✕</button>
+    </div>
+    <div class="gcart-items" id="cartItems"></div>
+    <div class="gcart-foot">
+      <div class="gdeliver" id="deliverTo"></div>
+      <div class="gcart-total"><span>Total</span><b id="cartTotal">₱0</b></div>
+      <button class="btn-red gfull" id="checkoutBtn">Place Order</button>
+      <button class="glink center" id="clearCart">Clear cart</button>
+      <p class="gmsg ok" id="cartMsg"></p>
+    </div>
+  </aside>
+
+  <!-- ================= CHECKOUT PAGE ================= -->
+  <div class="cko" id="checkoutPage" role="dialog" aria-label="Checkout">
+    <div class="cko-wrap">
+      <header class="cko-head">
+        <button type="button" class="cko-back" id="ckoBack" aria-label="Back">&#8592;</button>
+        <h3>Checkout</h3>
+      </header>
+      <div class="cko-body" id="ckoBody">
+        <section class="cko-card" id="ckoAddress"></section>
+        <section class="cko-card" id="ckoItems"></section>
+        <section class="cko-card" id="ckoPayment"></section>
+        <section class="cko-card" id="ckoDetails"></section>
+      </div>
+      <div class="cko-toast" id="ckoErr" role="alert"></div>
+      <footer class="cko-foot">
+        <div class="cko-foot-total"><span>Total <b id="ckoTotal">&#8369;0</b></span><small id="ckoSaved"></small></div>
+        <button type="button" class="btn-red" id="ckoPlace">Place Order</button>
+      </footer>
+
+      <!-- Payment Method screen -->
+      <div class="cko-screen" id="ckoPayScreen">
+        <header class="cko-head">
+          <button type="button" class="cko-back" id="ckoPayBack" aria-label="Back">&#8592;</button>
+          <h3>Payment Method</h3>
+        </header>
+        <div class="cko-body"><section class="cko-card" id="ckoPayList"></section></div>
+        <footer class="cko-foot"><button type="button" class="btn-red gfull" id="ckoPayConfirm">Confirm</button></footer>
+      </div>
+
+      <!-- Order placed screen -->
+      <div class="cko-screen" id="ckoDone">
+        <div class="cko-body" id="ckoDoneBody"></div>
+        <footer class="cko-foot cko-foot2"><button type="button" class="cko-ghost" id="ckoDoneBtn">Back to Menu</button><button type="button" class="btn-red" id="ckoTrackBtn">Track My Order</button></footer>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MY ORDERS PAGE ================= -->
+  <div class="cko" id="ordersPage" role="dialog" aria-label="My Orders">
+    <div class="cko-wrap">
+      <header class="cko-head">
+        <button type="button" class="cko-back" id="ordBack" aria-label="Back">&#8592;</button>
+        <h3>My <span class="ordt">Orders</span></h3>
+      </header>
+      <nav class="ord-tabs" id="ordTabs" aria-label="Order status"></nav>
+      <div class="cko-body" id="ordList"></div>
+
+      <!-- Order status / tracking screen -->
+      <div class="cko-screen" id="ordDetail">
+        <header class="cko-head">
+          <button type="button" class="cko-back" id="ordDetailBack" aria-label="Back">&#8592;</button>
+          <h3>Order <span class="ordt">Status</span></h3>
+        </header>
+        <div class="cko-body" id="ordDetailBody"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating cart + back to top -->
+  <div class="cartfl" id="floatCart"><span>🛒</span><span>My Cart</span><div class="ccount" id="cartCount2">0</div></div>
+  <button id="btt" aria-label="Back to top">▲</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
